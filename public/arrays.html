@@ -10,9 +10,9 @@
   <h1>Arrays my ninja</h1>
 
   <script>
-    var numbers = [2, 3, 5, 7, 42, 113]; //use this 'Array literal'
-    //Do not use the new Array() syntax
-    var letters = new Array('a', 'b', 'c', 'd');
+    // var numbers = [2, 3, 5, 7, 42, 113]; //use this 'Array literal'
+    // //Do not use the new Array() syntax
+    // var letters = new Array('a', 'b', 'c', 'd');
     //Uh Oh! Bad
     // var someMoreNumbers = new Array(3);
     // var someMoreLetters = new Array('a');
@@ -21,19 +21,19 @@
     // console.log(letters);
     // console.log(numbers);
     //Functions
-    function double(num){
-      return 2 * num;
-    }
-    function triple(num){
-      return 3 * num;
-    }
-    function toString(num){
-      return String(num);
-    }
-    function isLessThan20(num){
-      return num < 20;
-    }
-    // //Map - transform and give a new result
+    // function double(num){
+    //   return 2 * num;
+    // }
+    // function triple(num){
+    //   return 3 * num;
+    // }
+    // function toString(num){
+    //   return String(num);
+    // }
+    // function isLessThan20(num){
+    //   return num < 20;
+    // }
+    // // //Map - transform and give a new result
     // var numbersLessThan20 = numbers.map(isLessThan20);
     // console.log(numbers);
     // console.log(numbersLessThan20);
@@ -41,15 +41,48 @@
     // console.log(numbers);
     // console.log(doubled);
     //Filter // Must use a boolean condition to make sense
-    var lessThan = numbers.filter(isLessThan20);
-    var filterDouble = numbers.filter(double);
-    console.log(lessThan);
-    console.log(filterDouble);
-    console.log(numbers);
-    var stringNums = numbers.map(toString);
-    console.log(stringNums);
+    // var lessThan = numbers.filter(isLessThan20);
+    // var filterDouble = numbers.filter(double);
+    // console.log(lessThan);
+    // console.log(filterDouble);
+    // console.log(numbers);
+    // var stringNums = numbers.map(toString);
+    // console.log(stringNums);
     //forEach
+    var candies = ['reeses', 'nerds', 'mms', 'cheetos'];
+    var results = candies.forEach(function(candy){
+      console.log(`Eating: ${candy}`);
+    });
+    console.log(results);
+    function map(arr, transformation){
+      var satchel = [];// array placeholder for the transformed values
+      //for each element of arr, run the function in the parenthesis
+      arr.forEach(function(element){
+        //apply the transformation function to each element
+        // store that in the variable transformValue
+        var transformedValue = transformation(element);
+        satchel.push(transformedValue); //putting the new values into the satchel
+      });
+      return satchel;
+    }
+    function length(str){
+      return str.length;
+    }
+    var candyLength = map(candies, length);
+    console.log(candyLength);
     //Reduce
+    var integers = [1, 2, 3, 4, 5];
+    function sum(first, second){
+      return first + second;
+    }
+    function concat(str1, str2){
+      return str1 + str2;
+    }
+    //BEWARE: TYPES OF DATA MATTER
+    var total = integers.reduce(sum, 0); //sums all numbers
+    console.log(total);
+    var allCandies = candies.reduce(concat, '');
+    console.log(allCandies);
 
   </script>
 </body>
